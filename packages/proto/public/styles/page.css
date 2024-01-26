@@ -1,4 +1,5 @@
-.redbox {
+h1,
+h3{
     background-color: rgb(255, 0, 0);
     color: white;
     width: max-content;
