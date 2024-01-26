@@ -1,0 +1,17 @@
+.redbox {
+    background-color: rgb(255, 0, 0);
+    color: white;
+    width: max-content;
+    padding: 0.1em 0.25em; 
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: max-content;
+    column-gap: 2em;
+}
+
+body {
+    background-color:ivory;
+}
