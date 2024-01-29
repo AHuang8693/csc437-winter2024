@@ -1,6 +1,32 @@
+body {
+    font-family: var(--font-family-body);
+    background-color:ivory;
+}
+
 h1,
 h3{
-    background-color: rgb(255, 0, 0);
+    margin: 1em;
+    font-family: var(--font-family-display);
+    background-color: rgb(198, 0, 0);
+    color: white;
+    width: max-content;
+    padding: 0.1em 0.25em; 
+}
+
+svg.icon {
+    display: inline;
+    height: var(--size-icon-normal);
+    width: var(--size-icon-normal);
+    vertical-align: top;
+    fill: currentColor;
+  }
+
+.trait{
+    background-color: red;
+}
+
+.weapon h3{
+    background-color: rgb(0, 0, 0);
     color: white;
     width: max-content;
     padding: 0.1em 0.25em; 
@@ -11,8 +37,4 @@ h3{
     grid-template-columns: 1fr 1fr;
     width: max-content;
     column-gap: 2em;
-}
-
-body {
-    background-color:ivory;
 }
