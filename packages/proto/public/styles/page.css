@@ -1,6 +1,7 @@
 body {
     font-family: var(--font-family-body);
     background-color:ivory;
+    margin: 1.0em;
 }
 
 h1,
@@ -12,6 +13,21 @@ h3{
     width: max-content;
     padding: 0em 0.15em; 
 }
+
+/* Margin indent section */
+body :not(h1, h3, section) {
+    margin-left:1.5em;
+}
+
+section :not(h3) {
+    margin-left:1.5em;
+}
+
+em {
+    display: inline-block;
+}
+
+/* end section */
 
 svg.icon {
     display: inline;
