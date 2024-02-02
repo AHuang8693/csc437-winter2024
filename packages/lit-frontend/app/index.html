@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Glegoo&family=Noto+Sans&display=swap" rel="stylesheet">
+    <script type="module" src="/src/drop-down.ts"></script>
 </head>
 <body>
     <div class="container">
@@ -16,6 +17,15 @@
         <div><a href="weapons.html">Weapons</a></div>
         <div><a href="systems.html">Systems</a></div>
         <div><a href='roles.html'>Roles</a></div>
+        <div>
+            <drop-down>
+                Drop Test
+                    <ul slot="menu">
+                        <li>1</li>
+                        <li>2</li>
+                    </ul>
+            </drop-down>
+        </div>
     </div>
     <h1>Lancer</h1>
 

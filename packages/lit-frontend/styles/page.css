@@ -14,7 +14,7 @@ h3{
 }
 
 /* Margin indent section */
-body :not(h1, h3, section) {
+body :not(h1, h3, section, strong) {
     margin-left:1.5em;
 }
 
@@ -66,10 +66,11 @@ h3.system{
 .container {
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    justify-content: space-between;
+    align-items: baseline;
+
 }
 
-/* ----- choices better than pixel? */
 .container > div{
     width: 125px
 }
