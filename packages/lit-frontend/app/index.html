@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8" />
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
@@ -8,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Glegoo&family=Noto+Sans&display=swap" rel="stylesheet">
     <script type="module" src="/src/drop-down.ts"></script>
+    <script type="module" src="/src/user-panel.ts"></script>
 </head>
-<body>
+<body class="light-mode">
     <div class="container">
         <div></div>
         <div><a href="pilot.html"><svg class="icon"><use href="/icons/icons.svg#pilot" /></svg>Pilot</a></div>
@@ -21,7 +23,7 @@
             <drop-down>
                 Drop Test
                     <ul slot="menu">
-                        <li>1</li>
+                        <li><user-panel>Test</user-panel></li>
                         <li>2</li>
                     </ul>
             </drop-down>

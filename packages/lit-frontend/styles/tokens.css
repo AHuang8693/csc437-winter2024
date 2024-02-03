@@ -2,4 +2,9 @@
     --size-icon-normal: 2em;
     --font-family-body: 'Glegoo', serif;
     --font-family-display: 'Noto Sans', sans-serif;
+    --text-color: black;
+}
+
+body.dark-mode {
+    --text-color: white;
 }
