@@ -27,6 +27,7 @@ class DropDownElement extends LitElement {
     `;
   }
 
+  // 'left' value in slot[name='menu'] was customized
   static styles = css`
     :host {
       display: inline-block;
@@ -45,7 +46,7 @@ class DropDownElement extends LitElement {
       display: none;
       position: absolute;
       top: 100%;
-      left: 0;
+      right: 0; 
       border: 1px solid;
       background: white;
     }

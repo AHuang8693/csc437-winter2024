@@ -10,8 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Glegoo&family=Noto+Sans&display=swap" rel="stylesheet">
     <script type="module" src="/src/drop-down.ts"></script>
     <script type="module" src="/src/user-panel.ts"></script>
+    <script type="module" src="/src/toggle-switch.ts"></script>
+    <!-- <script type="module" src="/src/slider.ts"></script> -->
 </head>
-<body class="light-mode">
+<!-- NOTES
+Check lit-frontend github examples for user page
+look at bottom of toggle-switch for handleEvent example
+change view type from expanded to compact-->
+
+<body>
     <div class="container">
         <div></div>
         <div><a href="pilot.html"><svg class="icon"><use href="/icons/icons.svg#pilot" /></svg>Pilot</a></div>
@@ -22,10 +29,7 @@
         <div>
             <drop-down>
                 Drop Test
-                    <ul slot="menu">
-                        <li><user-panel>Test</user-panel></li>
-                        <li>2</li>
-                    </ul>
+                <user-panel slot="menu"></user-panel>
             </drop-down>
         </div>
     </div>
@@ -33,7 +37,8 @@
 
     <em>Mechanized Calvary stride across the battlefield, built in the image of man.</em>
     
-    
+    <p>Lancer is a tabletop role playing game centered on shared narratives, customizable mechs, 
+        and the pilots who crew them.</p>
     <!-- In the future, this should be a button on the top that activates a drop down -->
     <p><br>Mech List</p>
     <ul>

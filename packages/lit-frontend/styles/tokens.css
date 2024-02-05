@@ -3,8 +3,21 @@
     --font-family-body: 'Glegoo', serif;
     --font-family-display: 'Noto Sans', sans-serif;
     --text-color: black;
+    --background-color:ivory;
+
+    --color-brand: rgb(42 143 42);
+    --color-accent: var(--color-brand);
+    --color-border-control: var(--color-accent);
+    --color-foreground-control: #ffffff;
+}
+
+body.light-mode {
+    --text-color:black;
+    --background-color:ivory;
 }
 
 body.dark-mode {
     --text-color: white;
+    --background-color:black;
+    --color-brand: rgb(47, 26, 165);
 }

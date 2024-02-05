@@ -1,7 +1,19 @@
 body {
     font-family: var(--font-family-body);
-    background-color:ivory;
+    color: var(--text-color);
+    background-color:var(--background-color);
     margin: 1.0em;
+}
+
+/* link color */
+/* add token colors */
+a {
+    color:initial;
+
+}
+
+a:visited {
+    color:initial;
 }
 
 h1,
@@ -14,16 +26,17 @@ h3{
 }
 
 /* Margin indent code */
-body :not(h1, h3, section, strong, svg) {
-    margin-left:1.5em;
-    color: var(--text-color);
-}
+
 /* These two bits are seperate so sections 
 don't get indented, and certain things inside sections
 are ignored*/
 section :not(h1, h3, strong, svg) {
     margin-left:1.5em;
 }
+
+/* section > p, section > h1{
+    margin-left:1.5em;
+} */
 
 em {
     display: inline-block;
