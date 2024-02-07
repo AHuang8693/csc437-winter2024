@@ -39,7 +39,7 @@ export class ToggleSwitchElement extends LitElement {
         var(--time-transition-control);
     }
     .slider:has(input:checked) {
-      background-color: var(--color-accent);
+      background-color: var(--color-switch);
     }
     input {
       appearance: none;

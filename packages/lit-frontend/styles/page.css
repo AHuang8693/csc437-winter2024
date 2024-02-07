@@ -6,20 +6,20 @@ body {
 }
 
 /* link color */
-/* add token colors */
+/* use 'initial' for default */
 a {
-    color:initial;
+    color:var(--color-text);
 
 }
 
 a:visited {
-    color:initial;
+    color:var(--color-text);
 }
 
 h1,
 h3{
     font-family: var(--font-family-display);
-    background-color: rgb(198, 0, 0);
+    background-color: var(--color-brand);
     color: white;
     width: max-content;
     padding: 0em 0.15em; 
