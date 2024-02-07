@@ -56,12 +56,6 @@ section.trait > h3{
     padding: 0.1em 0.25em; 
 }
 
-section.weapon > h3{
-    background-color: rgb(0, 0, 0);
-    color: white;
-    width: max-content;
-    padding: 0.1em 0.25em; 
-}
 section.system > h3{
     background-color: rgb(39, 197, 44);
     color: white;
@@ -69,7 +63,49 @@ section.system > h3{
     padding: 0.1em 0.25em; 
 }
 
-.grid {
+section.weapon > h3{
+    grid-area:header;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    width: max-content;
+    padding: 0.1em 0.25em; 
+}
+
+
+
+.weapon {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+        "header ."
+        "type tags"
+        "range dmg";
+
+}
+
+section.weapon > .type{
+    grid-area: type;
+}
+
+section.weapon > .tags{
+    grid-area:tags;
+}
+
+section.weapon > .range{
+    grid-area:range;
+}
+
+section.weapon > .dmg{
+    grid-area:dmg;
+}
+
+.weapon h3 {
+    display:inline;
+    grid-column: 1/2;
+}
+
+.stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: max-content;
