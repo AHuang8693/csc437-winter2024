@@ -75,16 +75,17 @@ section.weapon > h3{
 
 .weapon {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas: 
-        "header ."
-        "type tags"
+        "header type"
+        "tags ."
         "range dmg";
 
 }
 
 section.weapon > .type{
+    align-self: center;
     grid-area: type;
 }
 
@@ -123,7 +124,3 @@ section.weapon > .dmg{
 .container > div{
     width: 125px
 }
-
-/* .container > header {
-    justify-content: left;
-} */
