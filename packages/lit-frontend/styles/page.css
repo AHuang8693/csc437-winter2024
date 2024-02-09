@@ -1,0 +1,126 @@
+body {
+    font-family: var(--font-family-body);
+    color: var(--color-text);
+    background-color:var(--color-background);
+    margin: 1.0em;
+}
+
+/* link color */
+/* use 'initial' for default */
+a {
+    color:var(--color-text);
+
+}
+
+a:visited {
+    color:var(--color-text);
+}
+
+h1,
+h3{
+    font-family: var(--font-family-display);
+    background-color: var(--color-brand);
+    color: white;
+    width: max-content;
+    padding: 0em 0.15em; 
+}
+
+/* Margin indent code */
+
+/* These two bits are seperate so sections 
+don't get indented, and certain things inside sections
+are ignored*/
+section :not(h1, h3, strong, svg) {
+    margin-left:1.5em;
+}
+
+
+em {
+    display: inline-block;
+}
+
+/* end code */
+
+svg.icon {
+    display: inline;
+    height: var(--size-icon-normal);
+    width: var(--size-icon-normal);
+    vertical-align: bottom;
+    fill: currentColor;
+  }
+
+section.trait > h3{
+    background-color: red;
+    color: white;
+    width: max-content;
+    padding: 0.1em 0.25em; 
+}
+
+section.system > h3{
+    background-color: rgb(39, 197, 44);
+    color: white;
+    width: max-content;
+    padding: 0.1em 0.25em; 
+}
+
+section.weapon > h3{
+    grid-area:header;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    width: max-content;
+    padding: 0.1em 0.25em; 
+}
+
+
+
+.weapon {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+        "header type"
+        "tags ."
+        "range dmg";
+
+}
+
+section.weapon > .type{
+    align-self: center;
+    grid-area: type;
+}
+
+section.weapon > .tags{
+    grid-area:tags;
+}
+
+section.weapon > .range{
+    grid-area:range;
+}
+
+section.weapon > .dmg{
+    grid-area:dmg;
+}
+
+.weapon h3 {
+    display:inline;
+    grid-column: 1/2;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: max-content;
+    column-gap: 2em;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+
+}
+
+.container > div{
+    width: 125px
+}
