@@ -1,8 +1,8 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
-import { connect } from "./mongoConnect.js";
-import profiles from "./profiles.js";
-import { Profile } from "./models/profile.js";
+import { connect } from "./mongoConnect";
+import profiles from "./profiles";
+import { Profile } from "./models/profile";
 
 const app = express();
 const port = process.env.PORT || 3000;
