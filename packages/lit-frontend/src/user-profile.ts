@@ -52,5 +52,57 @@ export class UserProfileElement extends LitElement {
     `;
   }
 
-  static styles = css`...`;
+  static styles = css`
+  * {
+    margin: 0;
+    box-sizing: border-box;
+  }`;
+}
+
+// in src/user-profile.ts, after the previous component
+@customElement("user-profile-edit")
+export class UserProfileEditElement extends UserProfileElement {
+  render() {
+    return html`<form @submit=${this._handleSubmit}>
+        <!-- fill in form here -->
+        <button type="submit">Submit</button>
+    </form> `;
+  }
+
+  static styles = [...UserProfileElement.styles, css`...`];
+
+  _handleSubmit(ev: Event) { 
+    ev.preventDefault(); // prevent browser from submitting form data itself
+
+    const target = ev.target as HTMLFormElement;
+    const formdata = new FormData(target);
+    const entries = Array.from(formdata.entries())
+      .map(([k, v]) => (v === "" ? [k] : [k, v]))
+      .map(([k, v]) =>
+        k === "airports"
+          ? [k, (v as string).split(",").map((s) => s.trim())]
+          : [k, v]
+      );
+    const json = Object.fromEntries(entries);
+
+    this._putData(json);
+   }
+
+  _putData(json: Profile) { 
+    fetch(serverPath(this.path), {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(json)
+    })
+      .then((response) => {
+        if (response.status === 200) return response.json();
+        else return null;
+      })
+      .then((json: unknown) => {
+        if (json) this.profile = json as Profile;
+      })
+      .catch((err) =>
+        console.log("Failed to PUT form data", err)
+      );
+   }
 }
