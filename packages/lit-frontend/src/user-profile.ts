@@ -1,15 +1,18 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { Profile } from "./models/profile";
+import { Profile } from "../models/profile"; //temporary copied models folder from backend to frontend
+import {serverPath} from "./rest.ts";
 
 @customElement("user-profile")
 export class UserProfileElement extends LitElement {
   @property()
   path: string = "";
 
+  // "Profile" type defined in express-backend/src/models/profile.ts
   @state()
   profile?: Profile;
 
+  //serverPath(path) -> localhost:3000/api/profiles/<userID>
   _fetchData(path: string) {
     fetch(serverPath(path))
       .then((response) => {
@@ -43,7 +46,10 @@ export class UserProfileElement extends LitElement {
 
   render() {
     // fill this in later
-    return html`...`;
+    const {userid, name} = this.profile || {}; 
+    return html`
+      <p>ID:${userid} Name:${name} </p>
+    `;
   }
 
   static styles = css`...`;

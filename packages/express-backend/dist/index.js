@@ -33,7 +33,7 @@ app.use(import_express.default.json());
 app.get("/hello", (req, res) => {
   res.send("Hello, World");
 });
-app.get("/api/profile/:userid", (req, res) => {
+app.get("/api/profiles/:userid", (req, res) => {
   const { userid } = req.params;
   import_profiles.default.get(userid).then((profile) => res.json(profile)).catch((err) => res.status(404).end());
 });
