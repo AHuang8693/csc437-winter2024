@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Glegoo&family=Noto+Sans&display=swap" rel="stylesheet">
+    <script type="module" src="/src/drop-down.ts"></script>
+    <script type="module" src="/src/user-panel.ts"></script>
+    <script type="module" src="/src/toggle-switch.ts"></script>
+    <script type="module" src="/src/user-profile.ts"></script>
+    <!-- <script type="module" src="/src/slider.ts"></script> -->
+</head>
+
+<body>
+    <div class="container">
+        <div><a href="../index.html">Home</a></div>
+        <div><a href="../pilot.html"><svg class="icon"><use href="/icons/icons.svg#pilot" /></svg>Pilot</a></div>
+        <div><a href="../factions.html">Factions</a></div>
+        <div><a href="../weapons.html">Weapons</a></div>
+        <div><a href="../systems.html">Systems</a></div>
+        <div><a href='../roles.html'>Roles</a></div>
+        <div>
+            <drop-down>
+                Profile
+                <user-panel
+                slot="menu"
+                avatar="/assets/testSmile.png">
+                    <span slot="name">Andy Huang</span>
+                </user-panel>
+            </drop-down>
+        </div>
+    </div>
+    <user-profile path="/profiles/ahuan102"></user-profile>
+    <user-profile-edit path="/profiles/ahuan102"></user-profile-edit>
+</body>
+</html>
