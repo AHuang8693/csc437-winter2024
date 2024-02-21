@@ -1,7 +1,9 @@
-import { css, html, LitElement } from "lit";
+import { css, html, LitElement, unsafeCSS} from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { Profile } from "../models/profile"; //temporary copied models folder from backend to frontend
 import {serverPath} from "./rest.ts";
+
+import pageCSS from "../styles/page.css?inline";
 
 @customElement("user-profile")
 export class UserProfileElement extends LitElement {
@@ -48,15 +50,18 @@ export class UserProfileElement extends LitElement {
     // fill this in later
     const {userid, name} = this.profile || {}; 
     return html`
-      <p>ID:${userid} Name:${name} </p>
+      <p>Username: ${name}<br>ID: ${userid} </p>
     `;
   }
 
-  static styles = css`
+  static styles = [
+  unsafeCSS(pageCSS),
+  css`
   * {
     margin: 0;
     box-sizing: border-box;
-  }`;
+  }`];
+
 }
 
 // in src/user-profile.ts, after the previous component
@@ -64,10 +69,11 @@ export class UserProfileElement extends LitElement {
 export class UserProfileEditElement extends UserProfileElement {
   render() {
     return html`<form @submit=${this._handleSubmit}>
-        <!-- fill in form here -->
+        <label>Enter New Username:
+          <input type="text" name="name"></label><br>
         <button type="submit">Submit</button>
     </form> `;
-  }
+  } //id is for <label>, name is for <form>
 
   static styles = [...UserProfileElement.styles, css`...`];
 
@@ -76,13 +82,9 @@ export class UserProfileEditElement extends UserProfileElement {
 
     const target = ev.target as HTMLFormElement;
     const formdata = new FormData(target);
+    //key, value. if value is nothing, map just the key as an entry, which is undefined without a value.
     const entries = Array.from(formdata.entries())
       .map(([k, v]) => (v === "" ? [k] : [k, v]))
-      .map(([k, v]) =>
-        k === "airports"
-          ? [k, (v as string).split(",").map((s) => s.trim())]
-          : [k, v]
-      );
     const json = Object.fromEntries(entries);
 
     this._putData(json);
