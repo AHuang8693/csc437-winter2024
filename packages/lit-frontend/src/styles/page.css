@@ -101,6 +101,15 @@ section.weapon > .dmg{
     grid-area:dmg;
 }
 
+.wContainer.compact > .weapon{
+    display: grid;
+    grid-template-columns: auto 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "header type tags range dmg";
+
+}
+
 .weapon h3 {
     display:inline;
     grid-column: 1/2;

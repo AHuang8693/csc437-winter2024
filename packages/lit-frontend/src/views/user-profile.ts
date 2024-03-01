@@ -1,7 +1,7 @@
 import { css, html, LitElement, unsafeCSS} from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { Profile } from "../models/profile"; //temporary copied models folder from backend to frontend
-import {serverPath} from "./rest.ts";
+import { Profile } from "ts-models";
+// import {serverPath} from "../src/rest.ts";
 
 import pageCSS from "../styles/page.css?inline";
 

@@ -10,7 +10,7 @@
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true
     },
-    "include": ["src"],
+    "include": ["src"],src/profiles.ts, "../ts-models/src/profile.ts"
     "exclude": ["node_modules"],
     "lib": ["esnext"],
     "ts-node": {
