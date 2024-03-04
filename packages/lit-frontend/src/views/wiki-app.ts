@@ -10,8 +10,8 @@ import "../components/page-header";
 import "../components/user-panel";
 
 
-@customElement("home-page")
-export class HomePageElement extends App.Main {
+@customElement("wiki-app")
+export class WikiAppElement extends App.Main {
  constructor() { super(update); }
  render() {
  return html`
