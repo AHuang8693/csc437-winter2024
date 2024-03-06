@@ -23,13 +23,22 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var import_express = __toESM(require("express"));
 var import_cors = __toESM(require("cors"));
+var path = __toESM(require("path"));
+var import_promises = __toESM(require("node:fs/promises"));
 var import_mongoConnect = require("./mongoConnect");
-var import_profiles = __toESM(require("../../ts-models/src/profiles"));
+var import_profiles = __toESM(require("./profiles"));
+const frontend = require.resolve("lit-frontend");
+const dist = path.dirname(frontend);
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
 app.use((0, import_cors.default)());
 app.use(import_express.default.json());
 (0, import_mongoConnect.connect)("Tom");
+app.use(import_express.default.static(dist));
+app.use("/app", (req, res) => {
+  const indexHtml = path.resolve(dist, "index.html");
+  import_promises.default.readFile(indexHtml, { encoding: "utf8" }).then((html) => res.send(html));
+});
 app.get("/hello", (req, res) => {
   res.send("Hello, World");
 });

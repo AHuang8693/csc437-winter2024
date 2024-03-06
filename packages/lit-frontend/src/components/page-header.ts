@@ -16,12 +16,12 @@ export class pageHeaderElement extends LitElement {
     render() {
         return html`
         <div class="container">
-            <div><a href="../app/index.html">Home</a></div>
-            <div><a href="pilot.html">Pilot</a></div>
-            <div><a href="factions.html">Factions</a></div>
-            <div><a href="weapons.html">Weapons</a></div>
-            <div><a href="systems.html">Systems</a></div>
-            <div><a href='roles.html'>Roles</a></div>
+            <div><a href="../app/index">Home</a></div>
+            <div><a href="pilot">Pilot</a></div>
+            <div><a href="factions">Factions</a></div>
+            <div><a href="/app/weapons">Weapons</a></div>
+            <div><a href="systems">Systems</a></div>
+            <div><a href='roles'>Roles</a></div>
             <div>
                 <drop-down>
                     Profile

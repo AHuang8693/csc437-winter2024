@@ -7,7 +7,7 @@ import profiles from "./profiles";
 import { Profile } from "../../ts-models/src/profile";
 
 const frontend = require.resolve("lit-frontend");
-const dist = path.resolve(frontend, "..", "..");
+const dist = path.dirname(frontend);
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -16,12 +16,11 @@ app.use(cors());
 app.use(express.json());
 connect("Tom"); //cluster name
 
-app.use("/api");
 // static assets: /styles, /images, /icons, etc.
 app.use(express.static(dist));
 // SPA routes: /app/...
 app.use("/app", (req, res) => {
- const indexHtml = path.resolve(dist, "app", "index.html");
+ const indexHtml = path.resolve(dist, "index.html");
  fs.readFile(indexHtml, { encoding: "utf8" })
  .then((html) => res.send(html));
 });

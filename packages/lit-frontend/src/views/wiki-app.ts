@@ -8,6 +8,7 @@ import update from "../update";
 // components
 import "../components/page-header";
 import "../components/user-panel";
+import "../components/vaadin-router";
 
 
 @customElement("wiki-app")

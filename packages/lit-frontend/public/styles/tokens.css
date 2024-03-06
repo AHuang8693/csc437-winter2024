@@ -1,0 +1,28 @@
+:root {
+    --size-icon-normal: 2em;
+    --font-family-body: 'Glegoo', serif;
+    --font-family-display: 'Noto Sans', sans-serif;
+
+
+    --color-text: black;
+    --color-background:ivory;
+    --color-brand: rgb(198, 0, 0);
+    --color-accent: var(--color-brand);
+    --color-border-control: var(--color-accent);
+    --color-switch: rgb(42, 143, 42);
+    --color-foreground-control: #ffffff;
+
+    --size-type-xlarge: 2rem;
+}
+
+/* body.light-mode {
+    --color-text:black;
+    --color-background:ivory;
+    --color-brand: rgb(198, 0, 0);
+} */
+
+body.dark-mode {
+    --color-text: rgb(255, 255, 255);
+    --color-background:rgb(40, 40, 40);
+    --color-brand: rgb(45, 138, 33);
+}

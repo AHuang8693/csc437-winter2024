@@ -1,4 +1,5 @@
 import "./views/wiki-app";
+import "./views/home-page";
 import "./views/user-profile";
 import "./views/weapons-page";
 

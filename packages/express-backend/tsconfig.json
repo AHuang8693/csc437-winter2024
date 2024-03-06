@@ -10,8 +10,7 @@
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true
     },
-    "include": ["src"],src/profiles.ts, "../ts-models/src/profile.ts"
-    "exclude": ["node_modules"],
+    "include": ["src"],
     "lib": ["esnext"],
     "ts-node": {
       "esm": true
