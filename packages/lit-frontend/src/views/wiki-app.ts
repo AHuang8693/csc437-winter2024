@@ -1,5 +1,5 @@
-import { css, html, LitElement, unsafeCSS} from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { html} from "lit";
+import { customElement } from "lit/decorators.js";
 
 // MVU app
 import * as App from "../app";
@@ -16,7 +16,7 @@ export class WikiAppElement extends App.Main {
  render() {
  return html`
     <auth-required>
-    <blazing-header></blazing-header>
+    <page-header></page-header>
     <vaadin-router .routes=${routes}> </vaadin-router>
     </auth-required>
  `;

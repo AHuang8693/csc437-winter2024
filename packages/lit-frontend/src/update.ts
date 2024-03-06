@@ -1,7 +1,6 @@
 import { APIRequest, JSONRequest } from "./rest";
 import * as App from "./app";
-import { convertStartEndDates } from "./utils/dates";
-import { Profile } from "ts-models";
+import { Profile, Weapon } from "ts-models";
 
 const dispatch = App.createDispatch();
 export default dispatch.update;
@@ -28,3 +27,47 @@ dispatch.addMessage("ProfileSelected", (msg: App.Message) => {
         profile ? App.updateProps({ profile }) : App.noUpdate
       );
   });
+
+dispatch.addMessage("ProfileSaved", (msg: App.Message) => {
+  const { userid, profile } = msg as App.ProfileSaved;
+
+  return new JSONRequest(profile)
+    .put(`/profiles/${userid}`)
+    .then((response: Response) => {
+      if (response.status === 200) {
+        return response.json();
+      }
+      return undefined;
+    })
+    .then((json: unknown) => {
+      if (json) {
+        console.log("Profile:", json);
+        json as Profile;
+      }
+      return undefined;
+    })
+    .then((profile: Profile | undefined) =>
+      profile ? App.updateProps({ profile }) : App.noUpdate
+    );
+});
+
+dispatch.addMessage("WeaponsRequested", (_msg: App.Message) => {
+
+  return new APIRequest()
+    .get(`/weapons/`)
+    .then((response: Response) => {
+      if (response.status === 200) {
+        return response.json();
+      }
+      return undefined;
+    })
+    .then((json: unknown) => {
+      if (json) {
+        console.log("Weapons:", json);
+        return json as Weapon[];
+      }
+    })
+    .then((weapons: Weapon[] | undefined) =>
+      weapons ? App.updateProps({ weapons }) : App.noUpdate
+    );
+});

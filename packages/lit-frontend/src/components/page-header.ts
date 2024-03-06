@@ -1,10 +1,12 @@
 import { css, html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-import pageCSS from "../styles/page.css?inline";
+import pageCSS from "/src/styles/page.css?inline";
 
 //components
-import "user-panel";
+import "./drop-down";
+import "./user-panel";
+
 
 @customElement("page-header") 
 export class pageHeaderElement extends LitElement {

@@ -1,13 +1,20 @@
-import { css, html, LitElement, unsafeCSS } from "lit";
+import { css, html, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import "../components/page-header";
+import {Weapon} from "ts-models";
 
-import pageCSS from "../styles/page.css?inline";
+import * as App from "../app";
+import pageCSS from "/src/styles/page.css?inline";
 
 @customElement("weapons-page") 
-export class weaponPageElement extends LitElement {
+export class weaponsPageElement extends App.View {
+
+  @property()
+  get weapons() {return this.getFromModel<Weapon[]>("weapons");}
 
     render() {
         return html`
+        <page-header></page-header>
         <main> 
           <h1>Weapons</h1>
 
@@ -21,7 +28,17 @@ export class weaponPageElement extends LitElement {
           Threat is the range weapons can be used in Overwatch. Default is 1, but can vary between weapons, especially Melee and CQB.<br>
           Damage is represented by dice and flat numbers, categorized into three types: Kinetic, Energy, and Explosive.<br>
           </p>
-          <section class="wContainer compact">
+
+          //attributtes are based off ts-models -----
+          ${(this.weapons || []).map(w => html`
+          <section class="weapon">
+          <h3>${w.name}</h3>
+              <div class="type">Main Rifle</div> <div class="tags">Reliable 2</div>
+              <div class="range">Range 20</div> <div class="dmg">2d6 Kinetic</div>
+          </section>
+          `)}
+
+          <section class="wContainer">
               <section class="weapon">
                   <h3>Assault Rifle</h3>
                       <div class="type">Main Rifle</div> <div class="tags">Reliable 2</div>

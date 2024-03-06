@@ -3,6 +3,7 @@ import {APIUser} from "./rest";
 import * as MVU from "./mvu";
 import { MsgType } from "./mvu";
 import { consume, createContext, provide } from "@lit/context";
+import { property, state } from "lit/decorators.js";
 
 export interface Model {
  weapons: Weapon[]; //array of weapon info
@@ -26,9 +27,14 @@ export interface ProfileSaved extends MsgType<"ProfileSaved"> {
   profile: Profile;
 }
 
+//used to initiate fetch for the weapons page
+export interface WeaponsRequested extends MsgType<"WeaponsRequested"> {
+}
+
 export type Message =
     | ProfileSelected
     | ProfileSaved
+    | WeaponsRequested
 
 //Main
 export class Main
@@ -47,6 +53,19 @@ export class Main
     );
   }
 }
+
+export class View extends MVU.View<Message> {
+  @consume({ context: context, subscribe: true })
+  @property({ attribute: false })
+  _model: Model | undefined;
+
+  getFromModel<T>(key: keyof Model) {
+    if (this._model) {
+      return this._model[key] as T;
+    }
+  }
+}
+
 
 export const createDispatch = () =>
   new MVU.Dispatch<Model, Message>();

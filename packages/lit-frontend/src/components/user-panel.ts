@@ -3,7 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import {ToggleSwitchElement } from "./toggle-switch.ts"
 
 @customElement("user-panel")
-class UserPanelElement extends LitElement {
+export class UserPanelElement extends LitElement {
   @property()
   avatar: string = "";
 
