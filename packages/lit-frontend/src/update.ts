@@ -1,6 +1,6 @@
 import { APIRequest, JSONRequest } from "./rest";
 import * as App from "./app";
-import { Profile, Weapon, Faction, Pilot } from "ts-models";
+import { Profile, Weapon, System, Faction, Role, Pilot } from "ts-models";
 
 const dispatch = App.createDispatch();
 export default dispatch.update;
@@ -72,6 +72,27 @@ dispatch.addMessage("WeaponsRequested", (_msg: App.Message) => {
     );
 });
 
+dispatch.addMessage("SystemsRequested", (_msg: App.Message) => {
+
+  return new APIRequest()
+    .get(`/systems/`)
+    .then((response: Response) => {
+      if (response.status === 200) {
+        return response.json();
+      }
+      return undefined;
+    })
+    .then((json: unknown) => {
+      if (json) {
+        console.log("Systems:", json);
+        return json as System[];
+      }
+    })
+    .then((systems: System[] | undefined) =>
+      systems ? App.updateProps({ systems }) : App.noUpdate
+    );
+});
+
 dispatch.addMessage("PilotRequested", (_msg: App.Message) => {
 
   return new APIRequest()
@@ -111,5 +132,26 @@ dispatch.addMessage("FactionsRequested", (_msg: App.Message) => {
     })
     .then((factions: Faction[] | undefined) =>
       factions ? App.updateProps({ factions }) : App.noUpdate
+    );
+});
+
+dispatch.addMessage("RolesRequested", (_msg: App.Message) => {
+
+  return new APIRequest()
+    .get(`/roles/`)
+    .then((response: Response) => {
+      if (response.status === 200) {
+        return response.json();
+      }
+      return undefined;
+    })
+    .then((json: unknown) => {
+      if (json) {
+        console.log("Roles:", json);
+        return json as Role[];
+      }
+    })
+    .then((roles: Role[] | undefined) =>
+      roles ? App.updateProps({ roles }) : App.noUpdate
     );
 });

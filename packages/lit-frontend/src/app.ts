@@ -1,4 +1,4 @@
-import { Weapon, Pilot, Faction, Profile } from "ts-models";
+import { Weapon, System, Pilot, Faction, Role, Profile } from "ts-models";
 import {APIUser} from "./rest";
 import * as MVU from "./mvu";
 import { MsgType } from "./mvu";
@@ -7,8 +7,10 @@ import { property, state } from "lit/decorators.js";
 
 export interface Model {
  weapons: Weapon[]; //array of weapon info
+ systems: System[];
  pilot?: Pilot; 
  factions: Faction[];
+ roles: Role[];
  user: APIUser;
  profile?: Profile;
 }
@@ -16,7 +18,9 @@ export const context = createContext<Model>("WikiModel");
 export const init: Model = {
  user: new APIUser(),
  weapons: [],
- factions: []
+ systems: [],
+ factions: [],
+ roles: []
 }
 
 //Messages
@@ -34,18 +38,26 @@ export interface ProfileSaved extends MsgType<"ProfileSaved"> {
 export interface WeaponsRequested extends MsgType<"WeaponsRequested"> {
 }
 
+export interface SystemsRequested extends MsgType<"SystemsRequested"> {
+}
+
 export interface PilotRequested extends MsgType<"PilotRequested"> {
 }
 
 export interface FactionsRequested extends MsgType<"FactionsRequested"> {
 }
 
+export interface RolesRequested extends MsgType<"RolesRequested"> {
+}
+
 export type Message =
     | ProfileSelected
     | ProfileSaved
     | WeaponsRequested
+    | SystemsRequested
     | PilotRequested
     | FactionsRequested
+    | RolesRequested
 
 //Main
 export class Main
