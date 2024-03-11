@@ -1,6 +1,6 @@
 import { APIRequest, JSONRequest } from "./rest";
 import * as App from "./app";
-import { Profile, Weapon, Pilot } from "ts-models";
+import { Profile, Weapon, Faction, Pilot } from "ts-models";
 
 const dispatch = App.createDispatch();
 export default dispatch.update;
@@ -90,5 +90,26 @@ dispatch.addMessage("PilotRequested", (_msg: App.Message) => {
     })
     .then((pilot: Pilot | undefined) =>
       pilot ? App.updateProps({ pilot }) : App.noUpdate
+    );
+});
+
+dispatch.addMessage("FactionsRequested", (_msg: App.Message) => {
+
+  return new APIRequest()
+    .get(`/factions/`)
+    .then((response: Response) => {
+      if (response.status === 200) {
+        return response.json();
+      }
+      return undefined;
+    })
+    .then((json: unknown) => {
+      if (json) {
+        console.log("Factions:", json);
+        return json as Faction[];
+      }
+    })
+    .then((factions: Faction[] | undefined) =>
+      factions ? App.updateProps({ factions }) : App.noUpdate
     );
 });

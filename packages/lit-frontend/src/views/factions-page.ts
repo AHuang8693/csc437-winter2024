@@ -1,0 +1,119 @@
+import { css, html, unsafeCSS } from "lit";
+import { customElement, property } from "lit/decorators.js";
+import {Faction} from "ts-models";
+
+import * as App from "../app";
+import pageCSS from "/src/styles/page.css?inline";
+
+@customElement("factions-page") 
+export class factionsPageElement extends App.View {
+
+  @property()
+  get factions() {return this.getFromModel<Faction[]>("factions");}
+
+    render() {
+        return html`
+        <main>
+        <h1>Factions</h1>
+        
+
+        <h3>General Massive Systems</h3>
+        <em>From Cradle to the stars, GMS: <br>assured quality, universal licensing, total coverage.</em>
+        <p>GMS is one of the oldest fabricators in the galaxy, first
+            getting its start in the early days of the colonization rush.
+            The manufacturer hails from Cradle, the home of Union –
+            and humanity – and thus its designs reflect the sensibilities
+            of the first pioneers to seek the stars. Today, GMS
+            products are available anywhere there is access to the
+            omninet. These products, whether consumer, specialty,
+            or military, are widely viewed as the galactic minimum of
+            quality: not particularly luxurious, but unsurpassed in nononsense
+            design, reliability, and ease of use.<br><br>
+            Where GMS
+            is available, anything less is unacceptable.</p>
+            <header>Production Line:</header>
+            <ul>
+                <li><a href="mechs/everest.html">Everest</a></li>
+            </ul>
+
+        <h3>IPS-Northstar</h3>
+        <em>Your friend in an unfriendly sea.</em>
+        <p>IPS-Northstar (IPS-N) was created from the merger of
+            two civilian interstellar freight and transportation
+            companies, Interplanetary Shipping and Northstar.
+            The resulting firm, IPS-N is a titanic entity – one of the
+            first corpro-states – with a virtual monopoly over
+            interplanetary and interstellar shipping. Other firms
+            exist, but their gross fleet strength is but a shadow of
+            IPS-N’s fleets of tankers, haulers, freighters, and
+            intergate/interstellar liners. Wherever goods and raw
+            materials need to be moved, you can bet a crew in
+            IPS-N uniforms will be there.</p>
+
+        <h3>Smith-Shimano Corpro</h3>
+        <em>You only need one.</em>
+        <p>Smith-Shimano Corpro (SSC) is the second-oldest
+            corporation in the galaxy, preceded only by GMS.
+            Founded by Cartwright Smith and Shimano Hideyoshi,
+            SSC’s emphasis on private stellar and
+            interstellar travel, the fantastic wealth of its founders,
+            and favorable contracts within Union’s First
+            Committee, Smith-Shimano quickly became an early
+            leader in the race to develop sublight, downwell, and
+            EVA vehicles. SSC grew throughout Union’s First
+            Expansion Period, managing the majority of all private
+            and corporate contracts’ design, outfitting, and
+            clinical needs. Over time, the corporation diversified
+            to specialize in bio-bespoke, long-range scout suits –
+            personalized hard suits, for those with the manna to
+            afford them.</p>
+
+        <h3>HORUS</h3>
+        <em>Congratualtions Pilot. You have been chosen. Access is yours, so long as you can keep it.</em>
+        <p>HORUS is an oddity among the various pan-galactic
+            corpro-states, outfitters, and manufacturers. Operating
+            in a gray legal state between harmless omninet
+            communes, open-source fabrication collaboratives,
+            black-market printers, and deeper, more esoteric
+            collectives, HORUS is counted among the Big Four
+            not due to its influence on galactic politics, but
+            because of its ubiquitous coverage: one can be
+            certain that wherever there is omninet, HORUS is
+            either there or soon to follow. Rumors abound as to
+            the manufacturer’s nature – some say it’s the dream
+            of an unshackled NHP or a hacker collective dedicated
+            to open-source manufacturing (at its most
+            mundane levels); others insist that it’s the proving
+            ground for one of the corpro-states’ R&D departments,
+            or the realspace projection of an alien entity’s
+            ongoing wish.</p>
+
+        <h3>Harrison Armory</h3>
+        <em>Superior by design.</em>
+        <p>Harrison Armory enjoys a galaxy-wide reputation for
+            the quality of its weapons and defensive systems. The
+            corpro-state previously specialized in ordnance and
+            other armaments, making it reliant on competitors’
+            frames as mounts for its deluxe equipment; however,
+            since the overthrow of Union’s Second Committee,
+            Harrison Armory has broadened its product line to
+            include an extensive range of peerless frontline
+            frames. On the wave of this new success, the Armory
+            has transformed into a burgeoning, imperial corprostate,
+            a mighty galactic power that directly administers
+            a large number of Core worlds, orbitals, and
+            colonial prospects – this is the Purview; all lands
+            under the Armory’s command.</p>
+        </main>`;
+      }
+
+      static styles = [
+        unsafeCSS(pageCSS),
+        css`
+        * {
+          margin: 0;
+          box-sizing: border-box;
+        }`];
+
+      
+}

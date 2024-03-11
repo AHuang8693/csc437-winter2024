@@ -1,6 +1,7 @@
-import { html} from "lit";
+import { css, html, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 
+import pageCSS from "/src/styles/page.css?inline";
 
 // MVU app
 import * as App from "../app";
@@ -28,6 +29,13 @@ export class HomePageElement extends App.Main {
         <li><a href="mechs/everest.html">Everest</a></li>
     </ul>
 </body>
-`;
- }
+`;}
+
+static styles = [
+    unsafeCSS(pageCSS),
+    css`
+    * {
+      margin: 0;
+      box-sizing: border-box;
+    }`];
 }

@@ -2,3 +2,4 @@
 export * from "./profile";
 export * from "./weapon";
 export * from "./pilot";
+export * from "./faction";

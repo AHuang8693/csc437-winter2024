@@ -22,7 +22,9 @@ h3{
     background-color: var(--color-brand);
     color: white;
     width: max-content;
-    padding: 0em 0.15em; 
+    padding: 0em 0.15em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
 }
 
 /* Margin indent code */

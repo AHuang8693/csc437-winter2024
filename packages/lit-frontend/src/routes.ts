@@ -3,6 +3,7 @@ import "./views/home-page";
 import "./views/user-profile";
 import "./views/weapons-page";
 import "./views/pilot-page";
+import "./views/factions-page";
 
 export default [
   {
@@ -15,6 +16,7 @@ export default [
 //   },
   { path: "/app/weapons", component: "weapons-page" },
   { path: "/app/pilot", component: "pilot-page" },
+  { path: "/app/factions", component: "factions-page" },
   { path: "/app", component: "home-page" },
   { path: "(.*)", redirect: "/app" }
 ];
