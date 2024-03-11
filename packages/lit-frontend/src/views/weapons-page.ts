@@ -1,6 +1,5 @@
 import { css, html, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import "../components/page-header";
 import {Weapon} from "ts-models";
 
 import * as App from "../app";
@@ -14,7 +13,6 @@ export class weaponsPageElement extends App.View {
 
     render() {
         return html`
-        <page-header></page-header>
         <main> 
           <h1>Weapons</h1>
 

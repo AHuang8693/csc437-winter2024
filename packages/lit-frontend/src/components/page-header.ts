@@ -17,11 +17,11 @@ export class pageHeaderElement extends LitElement {
         return html`
         <div class="container">
             <div><a href="../app/index">Home</a></div>
-            <div><a href="pilot">Pilot</a></div>
-            <div><a href="factions">Factions</a></div>
+            <div><a href="/app/pilot">Pilot</a></div>
+            <div><a href="/app/factions">Factions</a></div>
             <div><a href="/app/weapons">Weapons</a></div>
-            <div><a href="systems">Systems</a></div>
-            <div><a href='roles'>Roles</a></div>
+            <div><a href="/app/systems">Systems</a></div>
+            <div><a href='/app/roles'>Roles</a></div>
             <div>
                 <drop-down>
                     Profile

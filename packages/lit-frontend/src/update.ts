@@ -1,6 +1,6 @@
 import { APIRequest, JSONRequest } from "./rest";
 import * as App from "./app";
-import { Profile, Weapon } from "ts-models";
+import { Profile, Weapon, Pilot } from "ts-models";
 
 const dispatch = App.createDispatch();
 export default dispatch.update;
@@ -69,5 +69,26 @@ dispatch.addMessage("WeaponsRequested", (_msg: App.Message) => {
     })
     .then((weapons: Weapon[] | undefined) =>
       weapons ? App.updateProps({ weapons }) : App.noUpdate
+    );
+});
+
+dispatch.addMessage("PilotRequested", (_msg: App.Message) => {
+
+  return new APIRequest()
+    .get(`/pilot/`)
+    .then((response: Response) => {
+      if (response.status === 200) {
+        return response.json();
+      }
+      return undefined;
+    })
+    .then((json: unknown) => {
+      if (json) {
+        console.log("Pilot:", json);
+        return json as Pilot;
+      }
+    })
+    .then((pilot: Pilot | undefined) =>
+      pilot ? App.updateProps({ pilot }) : App.noUpdate
     );
 });

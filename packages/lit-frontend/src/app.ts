@@ -1,4 +1,4 @@
-import { Weapon, Profile } from "ts-models";
+import { Weapon, Pilot, Profile } from "ts-models";
 import {APIUser} from "./rest";
 import * as MVU from "./mvu";
 import { MsgType } from "./mvu";
@@ -7,6 +7,7 @@ import { property, state } from "lit/decorators.js";
 
 export interface Model {
  weapons: Weapon[]; //array of weapon info
+ pilot?: Pilot; 
  user: APIUser;
  profile?: Profile;
 }
@@ -31,10 +32,14 @@ export interface ProfileSaved extends MsgType<"ProfileSaved"> {
 export interface WeaponsRequested extends MsgType<"WeaponsRequested"> {
 }
 
+export interface PilotRequested extends MsgType<"PilotRequested"> {
+}
+
 export type Message =
     | ProfileSelected
     | ProfileSaved
     | WeaponsRequested
+    | PilotRequested
 
 //Main
 export class Main

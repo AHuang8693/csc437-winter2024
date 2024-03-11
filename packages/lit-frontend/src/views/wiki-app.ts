@@ -10,7 +10,6 @@ import "../components/page-header";
 import "../components/user-panel";
 import "../components/vaadin-router";
 
-
 @customElement("wiki-app")
 export class WikiAppElement extends App.Main {
  constructor() { super(update); }
