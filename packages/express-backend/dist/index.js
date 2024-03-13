@@ -27,6 +27,7 @@ var path = __toESM(require("path"));
 var import_promises = __toESM(require("node:fs/promises"));
 var import_mongoConnect = require("./mongoConnect");
 var import_profiles = __toESM(require("./profiles"));
+var import_weapons = __toESM(require("./weapons"));
 const frontend = require.resolve("lit-frontend");
 const dist = path.dirname(frontend);
 const app = (0, import_express.default)();
@@ -54,6 +55,10 @@ app.put("/api/profiles/:userid", (req, res) => {
   const { userid } = req.params;
   const newProfile = req.body;
   import_profiles.default.update(userid, newProfile).then((profile) => res.json(profile)).catch((err) => res.status(404).end());
+});
+app.get("/api/weapons", (req, res) => {
+  const { name } = req.params;
+  import_weapons.default.index().then((weapon) => res.json(weapon)).catch((err) => res.status(404).end());
 });
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

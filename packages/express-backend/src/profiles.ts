@@ -3,7 +3,7 @@ import { Profile } from "../../ts-models/src/profile";
 import ProfileModel from "./models/mongo/profile";
 
 function index(): Promise<Profile[]> {
-  return ProfileModel.find();
+  return ProfileModel.find(); //find() means return all
 }
 
 function get(userid: String): Promise<Profile> {

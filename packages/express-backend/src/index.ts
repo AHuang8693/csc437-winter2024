@@ -4,7 +4,9 @@ import * as path from "path";
 import fs from "node:fs/promises";
 import { connect } from "./mongoConnect";
 import profiles from "./profiles";
+import weapons from "./weapons";
 import { Profile } from "../../ts-models/src/profile";
+import { Weapon } from "../../ts-models/src/weapon";
 
 const frontend = require.resolve("lit-frontend");
 const dist = path.dirname(frontend);
@@ -57,6 +59,27 @@ app.put("/api/profiles/:userid", (req: Request, res: Response) => {
     .then((profile: Profile) => res.json(profile))
     .catch((err) => res.status(404).end());
 });
+
+app.get("/api/weapons", (req: Request, res: Response) => {
+  const { name } = req.params;
+
+  //index() function here runs find() in weapons.ts
+  weapons
+      .index()
+      .then((weapon: Weapon[]) => res.json(weapon))
+      .catch((err) => res.status(404).end());
+
+});
+
+
+// weapons
+//     .get("test")
+//     .then((weapon: Weapon) => res.json(weapon))
+//     .catch((err) => res.status(404).end());
+// weapons
+//     .index()
+//     .then((weapon: Weapon[]) => res.json(weapon))
+//     .catch((err) => res.status(404).end());
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

@@ -5,6 +5,7 @@ import pageCSS from "/src/styles/page.css?inline";
 
 //components
 import "./drop-down";
+import "./toggle-switch";
 import "./user-panel";
 
 
