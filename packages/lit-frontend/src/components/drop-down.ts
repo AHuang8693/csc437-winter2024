@@ -46,7 +46,6 @@ export class DropDownElement extends LitElement {
       display: none;
       position: absolute;
       top: 100%;
-      right: 0; 
       border: 1px solid;
       background: white;
     }
