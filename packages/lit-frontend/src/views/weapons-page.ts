@@ -34,11 +34,12 @@ export class weaponsPageElement extends App.View {
       Threat is the range weapons can be used in Overwatch. Default is 1, but can vary between weapons, especially Melee and CQB.<br>
       Damage is represented by dice and flat numbers, categorized into three types: Kinetic, Energy, and Explosive.<br>
       </p>
-
+      <section class="container">
       <toggle-switch @change=${this._toggleCompactMode}>
-      View Mode
+      View Mode 
       </toggle-switch>
-      
+      </section>
+
       <section class="wContainer" id="wContainer">
       ${(this.weapons || []).map(w => html`
       <section class="weapon">
