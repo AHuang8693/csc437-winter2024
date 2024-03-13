@@ -92,14 +92,17 @@ section.weapon > .type{
 }
 
 section.weapon > .tags{
+    align-self: center;
     grid-area:tags;
 }
 
 section.weapon > .range{
+    align-self: center;
     grid-area:range;
 }
 
 section.weapon > .dmg{
+    align-self: center;
     grid-area:dmg;
 }
 
