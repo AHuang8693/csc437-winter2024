@@ -44,9 +44,9 @@ function create(weapon) {
   const w = new import_weapon2.default(weapon);
   return w.save();
 }
-function update(name, damage, weapon) {
+function update(name, type, tags, range, damage, weapon) {
   return new Promise((resolve, reject) => {
-    import_weapon2.default.findOneAndUpdate({ name, damage }, weapon, {
+    import_weapon2.default.findOneAndUpdate({ name, type, tags, range, damage }, weapon, {
       new: true
     }).then((weapon2) => {
       if (weapon2)

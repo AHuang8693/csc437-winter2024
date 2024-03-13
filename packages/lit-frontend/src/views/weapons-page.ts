@@ -17,6 +17,8 @@ export class weaponsPageElement extends App.View {
   }
 
   render() {
+      //note: this errors if the mongo "weapons" collection only has one item in it, since
+      //      it will no longer return an array, so the .map() below doesn't work
       return html`
       <main> 
         <h1>Weapons</h1>
@@ -35,22 +37,10 @@ export class weaponsPageElement extends App.View {
         ${(this.weapons || []).map(w => html`
         <section class="weapon">
         <h3>${w.name}</h3>
-            <div class="type">Main Rifle</div> <div class="tags">Reliable 2</div>
-            <div class="range">Range 20</div> <div class="dmg">2d6 Kinetic</div>
+            <div class="type">${w.type}</div> <div class="tags">${w.tags}</div>
+            <div class="range">${w.range}</div> <div class="dmg">${w.damage}</div>
         </section>
         `)}
-        </section>
-        <section class="wContainer">
-            <section class="weapon">
-                <h3>Assault Rifle</h3>
-                    <div class="type">Main Rifle</div> <div class="tags">Reliable 2</div>
-                    <div class="range">Range 20</div> <div class="dmg">2d6 Kinetic</div>
-            </section>
-            <section class="weapon">
-                <h3>Segment Knife</h3>
-                    <div class="type">Auxiliary Melee</div> <div class="tags">Overkill</div>
-                    <div class="range">Threat 1</div> <div class="dmg">1d3+1 Energy</div>
-            </section>
         </section>
       </main>`;
     }

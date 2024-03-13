@@ -19,9 +19,9 @@ function create(weapon: Weapon): Promise<Weapon> {
   return w.save();
 }
 
-function update(name: String, damage: String, weapon: Weapon): Promise<Weapon> {
+function update(name: String, type: String, tags: String, range: String, damage: String, weapon: Weapon): Promise<Weapon> {
   return new Promise((resolve, reject) => {
-    WeaponModel.findOneAndUpdate({ name, damage }, weapon, {
+    WeaponModel.findOneAndUpdate({ name, type, tags, range, damage }, weapon, {
       new: true,
     }).then((weapon) => {
       if (weapon) resolve(weapon);
