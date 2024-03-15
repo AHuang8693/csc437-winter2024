@@ -57,8 +57,11 @@ app.put("/api/profiles/:userid", (req, res) => {
   import_profiles.default.update(userid, newProfile).then((profile) => res.json(profile)).catch((err) => res.status(404).end());
 });
 app.get("/api/weapons", (req, res) => {
-  const { name } = req.params;
   import_weapons.default.index().then((weapon) => res.json(weapon)).catch((err) => res.status(404).end());
+});
+app.post("/api/weapons", (req, res) => {
+  const newWeapon = req.body;
+  import_weapons.default.create(newWeapon).then((weapon) => res.json(weapon)).catch((err) => res.status(404).end());
 });
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

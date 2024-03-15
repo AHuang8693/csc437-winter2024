@@ -61,8 +61,6 @@ app.put("/api/profiles/:userid", (req: Request, res: Response) => {
 });
 
 app.get("/api/weapons", (req: Request, res: Response) => {
-  const { name } = req.params;
-
   //index() function here runs find() in weapons.ts
   weapons
       .index()
@@ -70,6 +68,15 @@ app.get("/api/weapons", (req: Request, res: Response) => {
       .catch((err) => res.status(404).end());
 
 });
+
+app.post("/api/weapons", (req: Request, res: Response) => {
+  const newWeapon = req.body;
+  weapons
+    .create(newWeapon)
+    .then((weapon: Weapon) => res.json(weapon))
+    .catch((err) => res.status(404).end());
+});
+
 
 
 // weapons

@@ -52,7 +52,6 @@ dispatch.addMessage("ProfileSaved", (msg: App.Message) => {
 });
 
 dispatch.addMessage("WeaponsRequested", (_msg: App.Message) => {
-
   return new APIRequest()
     .get(`/weapons/`)
     .then((response: Response) => {
@@ -71,6 +70,35 @@ dispatch.addMessage("WeaponsRequested", (_msg: App.Message) => {
       weapons ? App.updateProps({ weapons }) : App.noUpdate
     );
 });
+
+dispatch.addMessage("WeaponsCreated", (_msg: App.Message) => {
+  const { weapon } = _msg as App.WeaponsCreated;
+  
+  return new JSONRequest(weapon)
+    .post(`/weapons/`)
+    .then((response: Response) => {
+      if (response.status === 200) {
+        return response.json();
+      }
+      return undefined;
+    })
+    .then((json: unknown) => {
+      if (json) {
+        console.log("Weapon:", json);
+        return json as Weapon;
+      }
+    })
+    .then((newWeapon: Weapon | undefined) =>
+    newWeapon ? (model:App.Model) => {
+        const weapons = model.weapons;
+        weapons.push(newWeapon);
+        return Object.assign({}, model, {weapons});
+      }       : App.noUpdate
+    );
+});
+/*updateProps wasn't working here since in the model (app.ts), weapons is an array of Weapon,
+but I was trying to update the weapons Prop as the single newWeapon (probably would have deleted the other entries).
+Instead, we get the existing array, add newWeapon to it, and Object.assign() replaces the weapons array with the modifed one.*/
 
 dispatch.addMessage("SystemsRequested", (_msg: App.Message) => {
 

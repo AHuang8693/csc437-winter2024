@@ -1,8 +1,8 @@
 import { PropertyValueMap, css, html, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import {Weapon} from "ts-models";
-import {ToggleSwitchElement } from "../components/toggle-switch.ts"
-// import {AddWeaponFormElement } from "../components/add-weapon-form.ts"
+import {ToggleSwitchElement } from "../components/toggle-switch.ts";
+import "../components/add-weapon-form.ts";
 
 import * as App from "../app";
 import pageCSS from "/src/styles/page.css?inline";
@@ -85,35 +85,35 @@ export class weaponsPageElement extends App.View {
       
 }
 
-@customElement("add-weapon-form")
-export class AddWeaponFormElement extends weaponsPageElement {
-  render() {
-    return html`<form @submit=${this._handleSubmit}>
-        <label>Enter Name:
-          <input type="text" name="name"></label><br>
-        <label>Enter Type:
-          <input type="text" name="type"></label><br>
-        <label>Enter Tags:
-          <input type="text" name="tags"></label><br>
-        <label>Enter Range:
-          <input type="text" name="range"></label><br>
-        <label>Enter Damage:
-          <input type="text" name="damage"></label><br>
-        <button type="submit">Submit</button>
-    </form> `;
-  }
+// @customElement("add-weapon-form")
+// export class AddWeaponFormElement extends weaponsPageElement {
+//   render() {
+//     return html`<form @submit=${this._handleSubmit}>
+//         <label>Enter Name:
+//           <input type="text" name="name"></label><br>
+//         <label>Enter Type:
+//           <input type="text" name="type"></label><br>
+//         <label>Enter Tags:
+//           <input type="text" name="tags"></label><br>
+//         <label>Enter Range:
+//           <input type="text" name="range"></label><br>
+//         <label>Enter Damage:
+//           <input type="text" name="damage"></label><br>
+//         <button type="submit">Submit</button>
+//     </form> `;
+//   }
 
-  static styles =  [
-      unsafeCSS(pageCSS),
-      css`
-      * {
-        margin: 0;
-        box-sizing: border-box;
-      }`];
+//   static styles =  [
+//       unsafeCSS(pageCSS),
+//       css`
+//       * {
+//         margin: 0;
+//         box-sizing: border-box;
+//       }`];
 
-  _handleSubmit(ev: Event) { 
-    ev.preventDefault(); // prevent browser from submitting form data itself
+//   _handleSubmit(ev: Event) { 
+//     ev.preventDefault(); // prevent browser from submitting form data itself
   
-   }
+//    }
 
-}
+// }

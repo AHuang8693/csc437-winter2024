@@ -38,6 +38,10 @@ export interface ProfileSaved extends MsgType<"ProfileSaved"> {
 export interface WeaponsRequested extends MsgType<"WeaponsRequested"> {
 }
 
+export interface WeaponsCreated extends MsgType<"WeaponsCreated"> {
+  weapon: Weapon;
+}
+
 export interface SystemsRequested extends MsgType<"SystemsRequested"> {
 }
 
@@ -54,6 +58,7 @@ export type Message =
     | ProfileSelected
     | ProfileSaved
     | WeaponsRequested
+    | WeaponsCreated
     | SystemsRequested
     | PilotRequested
     | FactionsRequested
